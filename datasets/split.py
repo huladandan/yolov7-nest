@@ -1,6 +1,27 @@
 import os
 import random
 
+
+################################################################### 创建文件夹
+def mkdir(path):
+    folder = os.path.exists(path)
+
+    if not folder:  # 判断是否存在文件夹如果不存在则创建为文件夹
+        os.makedirs(path)  # makedirs 创建文件时如果路径不存在会创建这个路径
+        print
+        "---  new folder...  ---"
+        print
+        "---  OK  ---"
+
+    else:
+        print
+        "---  There is this folder!  ---"
+
+
+file = "./VOCnest/ImageSets/Main"
+mkdir(file)  # 调用函数
+#################################################################
+
 xmlfilepath = r'VOCnest/Annotations'  # xml文件的路径
 saveBasePath = r'VOCnest/ImageSets/'  # 生成的txt文件的保存路径
 

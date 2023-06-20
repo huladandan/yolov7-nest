@@ -5,6 +5,9 @@ from os import listdir, getcwd
 from os.path import join
 import shutil
 
+# xml2yolo&创建训练数据的地址txt
+
+
 sets = [('nest', 'train'), ('nest', 'val'), ('nest', 'train'), ('nest', 'val'), ('nest', 'test')]
 
 
