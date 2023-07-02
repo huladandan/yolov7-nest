@@ -1,3 +1,10 @@
+
+
+
+
+
+# xml2yolo&创建训练数据的地址txt
+
 import xml.etree.ElementTree as ET
 import pickle
 import os
@@ -5,13 +12,13 @@ from os import listdir, getcwd
 from os.path import join
 import shutil
 
-# xml2yolo&创建训练数据的地址txt
+
 
 
 sets = [('nest', 'train'), ('nest', 'val'), ('nest', 'train'), ('nest', 'val'), ('nest', 'test')]
 
 
-classes = ["nest"]
+classes = ["nest", "pole", "tower"]
 
 
 def convert(size, box):

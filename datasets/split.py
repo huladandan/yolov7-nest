@@ -22,7 +22,7 @@ file = "./VOCnest/ImageSets/Main"
 mkdir(file)  # 调用函数
 #################################################################
 
-xmlfilepath = r'VOCnest/Annotations'  # xml文件的路径
+xmlfilepath = r'VOCnest/AUG/Annotations/'  # xml文件的路径
 saveBasePath = r'VOCnest/ImageSets/'  # 生成的txt文件的保存路径
 
 trainval_percent = 0.9  # 训练验证集占整个数据集的比重（划分训练集和测试验证集）

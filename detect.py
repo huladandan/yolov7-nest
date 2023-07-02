@@ -116,6 +116,10 @@ def detect(save_img=False):
                     n = (det[:, -1] == c).sum()  # detections per class
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
+                # Write results+计数
+                nest_count = 1
+                pole_count = 1
+                tower_count = 1
                 # Write results
                 for *xyxy, conf, cls in reversed(det):
                     if save_txt:  # Write to file
@@ -125,7 +129,16 @@ def detect(save_img=False):
                             f.write(('%g ' * len(line)).rstrip() % line + '\n')
 
                     if save_img or view_img:  # Add bbox to image
-                        label = f'{names[int(cls)]} {conf:.2f}'
+                        # label = f'{names[int(cls)]} {conf:.2f}'
+                        if int(cls) == 0:
+                            label = '%s %.2f  num: %d' % (names[int(cls)], conf, nest_count)
+                            nest_count += 1
+                        if int(cls) == 1:
+                            label = '%s %.2f  num: %d' % (names[int(cls)], conf, pole_count)
+                            pole_count += 1
+                        if int(cls) == 2:
+                            label = '%s %.2f  num: %d' % (names[int(cls)], conf, tower_count)
+                            tower_count += 1
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)], line_thickness=1)
 
             # Print time (inference + NMS)
@@ -165,7 +178,7 @@ def detect(save_img=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str, default='runs/train/exp58/weights/best.pt', help='model.pt path(s)')
+    parser.add_argument('--weights', nargs='+', type=str, default='runs/train/exp59/weights/best.pt', help='model.pt path(s)')
     parser.add_argument('--source', type=str, default='inference/nest', help='source')  # file/folder, 0 for webcam
     parser.add_argument('--img-size', type=int, default=640, help='inference size (pixels)')
     parser.add_argument('--conf-thres', type=float, default=0.25, help='object confidence threshold')
